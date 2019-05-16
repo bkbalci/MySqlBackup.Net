@@ -60,6 +60,11 @@ namespace MySql.Data.MySqlClient
             return _lst.GetEnumerator();
         }
 
+        public List<MySqlTable> GetList()
+        {
+            return _lst;
+        }
+
         public void Dispose()
         {
             for (int i = 0; i < _lst.Count; i++)

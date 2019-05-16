@@ -9,6 +9,7 @@ using System.IO.Compression;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Reflection;
+using System.Linq;
 
 namespace MySql.Data.MySqlClient
 {
@@ -413,9 +414,13 @@ namespace MySql.Data.MySqlClient
             }
             else
             {
+                var tableList = _database.Tables.GetList();
                 foreach (KeyValuePair<string, string> kv in ExportInfo.TablesToBeExportedDic)
                 {
-                    dic[kv.Key] = kv.Value;
+                    if (tableList.Any(x => x.Name == kv.Key))
+                    {
+                        dic[kv.Key] = kv.Value;
+                    }
                 }
             }
 

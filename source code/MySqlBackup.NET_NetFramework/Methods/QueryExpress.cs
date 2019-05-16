@@ -111,6 +111,12 @@ namespace MySql.Data.MySqlClient
                     case '\'': // Single quotation mark
                         builder.AppendFormat("''");
                         break;
+                    case '’':
+                        builder.AppendFormat("''");
+                        break;
+                    case '?':
+                        builder.AppendFormat("");
+                        break;
                     default:
                         builder.Append(ch);
                         break;
